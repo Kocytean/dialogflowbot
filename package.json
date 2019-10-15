@@ -1,0 +1,14 @@
+{
+  "name": "HRBot",
+  "version": "1.0.0",
+  "description": "HRbot. Webhook echo sample",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Ayush Bahuguna",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4"
+  }
+}
