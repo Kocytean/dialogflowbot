@@ -21,6 +21,7 @@ restService.post("/qhrbot", function(req, res) {
     req.body.queryResult &&
     req.body.queryResult.parameters &&
     req.body.queryResult.outputContexts
+      ? true
       : false;
 
   // var contexts = req.body.queryResult.outputContexts
