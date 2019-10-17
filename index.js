@@ -30,6 +30,17 @@ restService.post("/qhrbot", function(req, res) {
 					:  req.body.queryResult.outputContexts[0].parameters.Topic === "PoSH"
 					? "You will need to take the test as soon as you onboard. This test should be done once every year."
 					: "You will need to take the test as soon as you onboard. Post 6 months you need to take it again.";
+			break;
+		case "Compliance.Passperc":
+			var ok = req.body.queryResult &&
+					req.body.queryResult.outputContexts[0].parameters &&
+					req.body.queryResult.outputContexts[0].parameters.Topic;
+			speech = !ok
+					? "The passing percentage for PoSH is 85% and for InfoSec 80% "
+					:  req.body.queryResult.outputContexts[0].parameters.Topic === "PoSH"
+					? "85% is the pass percentage, You will need to retake the test till you score above 85%"
+					: "80% is the pass percentage, You will need to retake the test till you score above 80%";
+			break;
 	}
 
 	var speechResponse = {
