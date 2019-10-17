@@ -24,9 +24,9 @@ restService.post("/qhrbot", function(req, res) {
       ? true
       : false;
 
-  var contexts = req.body.queryResult.outputContexts.parameters.Topic? req.body.queryResult.outputContexts: req.body.queryResult;
-  console.log(contexts)
-  var speech = "test"
+  var contexts = req.body.queryResult.outputContexts.parameters;
+  console.log(contexts);
+  var speech = "test";
   var speechResponse = {
     google: {
       expectUserResponse: true,
