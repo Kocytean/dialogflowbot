@@ -6,50 +6,55 @@ const bodyParser = require("body-parser");
 const restService = express();
 
 restService.use(
-  bodyParser.urlencoded({
-    extended: true
-  })
+	bodyParser.urlencoded({
+		extended: true
+	})
 );
 
 restService.use(bodyParser.json());
 
 restService.post("/qhrbot", function(req, res) {
 
-  
-  
-  var ok =
-    req.body.queryResult &&
-    req.body.queryResult.parameters &&
-    req.body.queryResult.outputContexts
-      ? true
-      : false;
+	var query = req.body.queryResult;
+	// console.log(query)
+	var action = query.action
+	var speech = ""
 
-  var contexts = req.body.queryResult;
-  console.log(contexts);
-  var speech = "test";
-  var speechResponse = {
-    google: {
-      expectUserResponse: true,
-      richResponse: {
-        items: [
-          {
-            simpleResponse: {
-              textToSpeech: speech
-            }
-          }
-        ]
-      }
-    }
-  };
-  
-  return res.json({
-    payload: speechResponse,
-    //data: speechResponse,
-    fulfillmentText: speech,
-    speech: speech,
-    displayText: speech,
-    source: "qhrbot"
-  });
+	switch (action){
+		case "Compliance.Frequency":
+			var ok = req.body.queryResult &&
+					req.body.queryResult.outputContexts[0].parameters &&
+					req.body.queryResult.outputContexts[0].parameters.Topic;
+			speech = !ok
+					? "You will need to take the tests as soon as you onboard. This test should be done once every year for PoSH and 6 months for InfoSec. "
+					:  req.body.queryResult.outputContexts[0].parameters.Topic === "PoSH"
+					? "You will need to take the test as soon as you onboard. This test should be done once every year."
+					: "You will need to take the test as soon as you onboard. Post 6 months you need to take it again.";
+	}
+
+	var speechResponse = {
+		google: {
+			expectUserResponse: true,
+			richResponse: {
+				items: [
+					{
+						simpleResponse: {
+							textToSpeech: speech
+						}
+					}
+				]
+			}
+		}
+	};
+	
+	return res.json({
+		payload: speechResponse,
+		//data: speechResponse,
+		fulfillmentText: speech,
+		speech: speech,
+		displayText: speech,
+		source: "qhrbot"
+	});
 });
 
 // restService.post("/audio", function(req, res) {
@@ -221,5 +226,5 @@ restService.post("/qhrbot", function(req, res) {
 // });
 
 restService.listen(process.env.PORT || 8000, function() {
-  console.log("Server up and listening");
+	console.log("Server up and listening");
 });
