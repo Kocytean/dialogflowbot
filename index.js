@@ -26,7 +26,7 @@ restService.post("/qhrbot", function(req, res) {
 	req.body.queryResult.outputContexts.forEach(function(oc) {
 		var okk =  oc.parameters && oc.parameters.Topic;
 		posh_bool = posh_bool|| (okk&& oc.parameters.Topic==="PoSH") || oc.name.indexOf("posh")!=-1;
-		infs_bool = posh_bool|| (okk&& oc.parameters.Topic==="InfoSec") || oc.name.indexOf("infosec")!=-1;
+		infs_bool = infs_bool|| (okk&& oc.parameters.Topic==="InfoSec") || oc.name.indexOf("infosec")!=-1;
 		console.log(oc.name);
 		console.log(posh_bool);
 		console.log(infs_bool);
