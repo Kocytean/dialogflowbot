@@ -27,17 +27,16 @@ restService.post("/qhrbot", function(req, res) {
 		var okk =  oc.parameters && oc.parameters.Topic;
 		posh_bool = posh_bool|| (okk&& oc.parameters.Topic==="PoSH") || oc.name.indexOf("posh")!=-1;
 		infs_bool = infs_bool|| (okk&& oc.parameters.Topic==="InfoSec") || oc.name.indexOf("infosec")!=-1;
-		console.log(oc.name);
-		console.log(posh_bool);
-		console.log(infs_bool);
+		
 		both = ~(posh_bool^infs_bool);
 	});
-
+		console.log(both);
+		console.log(posh_bool);
+		console.log(infs_bool);
 	switch (action){
 		case "Compliance.Frequency":
 			
-			
-			
+
 			speech = both
 				? "You will need to take the tests as soon as you onboard. These tests should be done once every year for PoSH and 6 months for InfoSec. "
 				:  posh_bool
