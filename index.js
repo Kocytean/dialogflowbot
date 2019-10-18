@@ -28,8 +28,8 @@ restService.post("/qhrbot", function(req, res) {
 		posh_bool = posh_bool|| (okk&& oc.parameters.Topic==="PoSH") || oc.name.indexOf("posh")!=-1;
 		infs_bool = posh_bool|| (okk&& oc.parameters.Topic==="InfoSec") || oc.name.indexOf("infosec")!=-1;
 		console.log(oc.name);
-		console.log(oc.name.indexOf("posh"));
-		console.log(oc.name.indexOf("infosec"));
+		console.log(posh_bool);
+		console.log(infs_bool);
 		both = ~(posh_bool^infs_bool);
 	});
 
@@ -55,9 +55,6 @@ restService.post("/qhrbot", function(req, res) {
 			break;
 
 		case "Compliance.Duration":
-			var ok = req.body.queryResult &&
-					req.body.queryResult.outputContexts[0].parameters &&
-					req.body.queryResult.outputContexts[0].parameters.Topic;
 			
 			speech = both
 				? "The InfoSec test takes about 5 minutes, while the PoSH test usually takes 3 hours with a stable internet connection as there are videos which are a part of the training."
@@ -68,6 +65,7 @@ restService.post("/qhrbot", function(req, res) {
 
 		case "InvalidRequest":
 			speech = "Invalid Request."
+			break;
 	}
 
 	var speechResponse = {
