@@ -18,7 +18,7 @@ restService.post("/qhrbot", function(req, res) {
 	var action = req.body.queryResult
 				? req.body.queryResult.action
 				: "InvalidRequest"
-// 	console.log(query)
+
 	var speech = ""
 	var posh_bool = false;
 	var infs_bool = false;
@@ -30,9 +30,7 @@ restService.post("/qhrbot", function(req, res) {
 		
 		both = posh_bool==infs_bool;
 	});
-		console.log(both);
-		console.log(posh_bool);
-		console.log(infs_bool);
+
 	switch (action){
 		case "Compliance.Frequency":
 			
