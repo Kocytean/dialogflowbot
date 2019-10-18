@@ -18,7 +18,7 @@ restService.post("/qhrbot", function(req, res) {
 	var action = req.body.queryResult
 				? req.body.queryResult.action
 				: "InvalidRequest"
-	// console.log(query)
+// 	console.log(query)
 	var speech = ""
 	var posh_bool = false;
 	var infs_bool = false;
@@ -27,6 +27,9 @@ restService.post("/qhrbot", function(req, res) {
 		var okk =  oc.parameters && oc.parameters.Topic;
 		posh_bool = posh_bool|| (okk&& oc.parameters.Topic==="PoSH") || oc.name.indexOf("posh")!=-1;
 		infs_bool = posh_bool|| (okk&& oc.parameters.Topic==="InfoSec") || oc.name.indexOf("infosec")!=-1;
+		console.log(oc.name);
+		console.log(oc.name.indexOf("posh"));
+		console.log(oc.name.indexOf("infosec"));
 		both = ~(posh_bool^infs_bool);
 	});
 
