@@ -18,7 +18,7 @@ restService.post("/qhrbot", function(req, res) {
 	var action = req.body.queryResult
 				? req.body.queryResult.action
 				: "InvalidRequest"
-
+// 	console.log(query)
 	var speech = ""
 	var posh_bool = false;
 	var infs_bool = false;
@@ -28,9 +28,11 @@ restService.post("/qhrbot", function(req, res) {
 		posh_bool = posh_bool|| (okk&& oc.parameters.Topic==="PoSH") || oc.name.indexOf("posh")!=-1;
 		infs_bool = infs_bool|| (okk&& oc.parameters.Topic==="InfoSec") || oc.name.indexOf("infosec")!=-1;
 		
-		both = posh_bool==infs_bool;
+		both = ~(posh_bool^infs_bool);
 	});
-
+		console.log(both);
+		console.log(posh_bool);
+		console.log(infs_bool);
 	switch (action){
 		case "Compliance.Frequency":
 			
@@ -59,12 +61,15 @@ restService.post("/qhrbot", function(req, res) {
 				? "This usually takes 3 hours if you have a stable internet connection as there are videos which are a part of the training."
 				: "This usually takes about 5 minutes if you have a stable internet connection";
 			break;
-			
 		case "Compliance.WhatIs":
+			req.body.queryResult.outputContexts.forEach(function(oc) {
+				posh_bool = oc.name.indexOf("posh")!=-1;
+				infs_bool = oc.name.indexOf("infosec")!=-1;
+			});
 			
-			speech = oc.name.indexOf("posh")!=-1
+			speech = posh_bool
 				? "The Prevention of Sexual Harassment (POSH) policy is implemented by a company to create and maintain safe work environment, free from sexual harassment and discrimination for all of its employees. It follows the guidelines and regulations laid down by the “Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013” and prohibits any act of sexual harrassment or related retaliation against or by any employee."
-				:  oc.name.indexOf("infosec")!=-1
+				: infs_bool
 				? "<Insert about infosec>"
 				: "Context not available";
 			break;
