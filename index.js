@@ -59,6 +59,15 @@ restService.post("/qhrbot", function(req, res) {
 				? "This usually takes 3 hours if you have a stable internet connection as there are videos which are a part of the training."
 				: "This usually takes about 5 minutes if you have a stable internet connection";
 			break;
+			
+		case "Compliance.WhatIs":
+			
+			speech = oc.name.indexOf("posh")!=-1
+				? "The Prevention of Sexual Harassment (POSH) policy is implemented by a company to create and maintain safe work environment, free from sexual harassment and discrimination for all of its employees. It follows the guidelines and regulations laid down by the “Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013” and prohibits any act of sexual harrassment or related retaliation against or by any employee."
+				:  oc.name.indexOf("infosec")!=-1;
+				? "<Insert about infosec>"
+				: "Context not available";
+			break;
 
 		case "InvalidRequest":
 			speech = "Invalid Request."
