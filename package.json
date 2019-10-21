@@ -1,7 +1,7 @@
 {
   "name": "HRBot",
-  "version": "1.0.0",
-  "description": "HRbot. Webhook echo sample",
+  "version": "0.1.0",
+  "description": "Quantiphi HRbot",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
