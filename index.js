@@ -64,7 +64,7 @@ restService.post("/qhrbot", function(req, res) {
 			
 			speech = oc.name.indexOf("posh")!=-1
 				? "The Prevention of Sexual Harassment (POSH) policy is implemented by a company to create and maintain safe work environment, free from sexual harassment and discrimination for all of its employees. It follows the guidelines and regulations laid down by the “Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013” and prohibits any act of sexual harrassment or related retaliation against or by any employee."
-				:  oc.name.indexOf("infosec")!=-1;
+				:  oc.name.indexOf("infosec")!=-1
 				? "<Insert about infosec>"
 				: "Context not available";
 			break;
