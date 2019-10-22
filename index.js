@@ -63,8 +63,8 @@ restService.post("/qhrbot", function(req, res) {
 			posh_bool = req.body.queryResult.parameters.Topic? req.body.queryResult.parameters.Topic ==="PoSH": false;
 			infs_bool = req.body.queryResult.parameters.Topic? req.body.queryResult.parameters.Topic ==="InfoSec": false;
 
-			var about_test_bool = req.body.queryResult.parameters.Test? true:false;
-			var quant_bool = req.body.queryResult.parameters.Quantiphi? true:false;
+			var about_test_bool = req.body.queryResult.parameters.hasOwnProperty('Test')? true:false;
+			var quant_bool = req.body.queryResult.parameters.hasOwnProperty('Quantiphi')? true:false;
 
 			if(about_test_bool){
 				speech = posh_bool
