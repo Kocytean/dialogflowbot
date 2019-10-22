@@ -22,7 +22,7 @@ restService.post("/qhrbot", function(req, res) {
 	var speech = ""
 	var posh_bool = false;
 	var infs_bool = false;
-	var both = false
+	var both = false;
 	req.body.queryResult.outputContexts.forEach(function(oc) {
 		var okk =  oc.parameters && oc.parameters.Topic;
 		posh_bool = posh_bool|| (okk&& oc.parameters.Topic==="PoSH") || oc.name.indexOf("posh")!=-1;
