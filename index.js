@@ -60,7 +60,9 @@ restService.post("/qhrbot", function(req, res) {
 				: "This usually takes about 5 minutes if you have a stable internet connection";
 			break;
 		case "Compliance.StudyMaterial":
-			
+			console.log(posh_bool);
+			console.log(infs_bool);
+			console.log(both);
 			speech = both
 				?"You will find relevant material in the Files section on Zoho. (You can use the filter feature in the top right to search for files by name.)" 
 				:  posh_bool
