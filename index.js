@@ -63,24 +63,24 @@ restService.post("/qhrbot", function(req, res) {
 			posh_bool = req.body.queryResult.parameters.Topic? req.body.queryResult.parameters.Topic ==="PoSH": false;
 			infs_bool = req.body.queryResult.parameters.Topic? req.body.queryResult.parameters.Topic ==="InfoSec": false;
 
-			var about_test_bool = req.body.queryResult.parameters.hasOwnProperty('Test')? true:false;
-			var quant_bool = req.body.queryResult.parameters.hasOwnProperty('Quantiphi')? true:false;
-
-			if(about_test_bool){
-				speech = posh_bool
-					? "POSH test contains an online video training followed by a test of 18 questions having a cumulative duration of approximately 3 hours. The video tutorial is mandatory for all new joiners. Employees taking the course as a refresher can directly take the test, which takes approximately 10-15 minutes to complete. This is a Mandatory Compliance Test and needs to be attempted in a timely manner once every year. 85% is the pass threshold; you will need to retake the test till you score above 85%."
-					: infs_bool
-					? "<Insert about infosec>"
-					: "Context not available";
-				break;
-			} else if (quant_bool){
+			var about_test_bool = req.body.queryResult.parameters.Test? true:false;
+			var quant_bool = req.body.queryResult.parameters.Quantiphi? true:false;
+			if (quant_bool){
 				speech = posh_bool
 					? "Quantiphi Analytics is committed to ensuring that the work environment at all locations of the organisation is fair, safe and harmonious. The company strives to create a safe and welcoming environment even for those who visit our premises, such as customers, vendors and others. Discrimination and harassment of any type is strictly prohibited. Every organization with more than 50 or more employees needs to establish an Internal Complaints Committee (ICC). Even though the act states it is for women, any employee- male or female, should not hesitate to reach out to the respective committee member from the HR Team. For more details about the committee or complaint procedure, please refer to the Prevention of Sexual Harassment Policy available under the “FIles” section on Zoho."
 					: infs_bool
 					? "<Insert about infosec>"
 					: "Context not available";
 				break;
-			}
+			} else if(about_test_bool){
+				speech = posh_bool
+					? "POSH test contains an online video training followed by a test of 18 questions having a cumulative duration of approximately 3 hours. The video tutorial is mandatory for all new joiners. Employees taking the course as a refresher can directly take the test, which takes approximately 10-15 minutes to complete. This is a Mandatory Compliance Test and needs to be attempted in a timely manner once every year. 85% is the pass threshold; you will need to retake the test till you score above 85%."
+					: infs_bool
+					? "<Insert about infosec>"
+					: "Context not available";
+				break;
+			} else 
+			
 			
 			speech = posh_bool
 				? "The Prevention of Sexual Harassment (POSH) policy is implemented by a company to create and maintain safe work environment, free from sexual harassment and discrimination for all of its employees. It follows the guidelines and regulations laid down by the “Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013” and prohibits any act of sexual harrassment or related retaliation against or by any employee."
