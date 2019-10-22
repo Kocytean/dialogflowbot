@@ -28,7 +28,7 @@ restService.post("/qhrbot", function(req, res) {
 		posh_bool = posh_bool|| (okk&& oc.parameters.Topic==="PoSH") || oc.name.indexOf("posh")!=-1;
 		infs_bool = infs_bool|| (okk&& oc.parameters.Topic==="InfoSec") || oc.name.indexOf("infosec")!=-1;
 		
-		both = ~(posh_bool^infs_bool);
+		both = (posh_bool&&infs_bool)||(~(posh_bool||infs_bool));
 	});
 
 	switch (action){
