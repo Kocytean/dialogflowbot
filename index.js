@@ -80,7 +80,23 @@ restService.post("/qhrbot", function(req, res) {
 			both = (posh_bool&&infs_bool) || !(posh_bool||infs_bool);
 			speech = infs_bool
 				? "Please choose from the following categories that you want to know about InfoSec test:\n- About InfoSec test\n- Preparation\n- Test guidelines\n- Test errors" 
-				:  "Please choose from the following categories that you want to know about PoSH test:\n- About PoSH test\n- Preparation\n- Test guidelines\n- Errors" ;
+				:  "Please choose from the following categories that you want to know about PoSH test:\n- About PoSH test\n- Preparation\n- Test guidelines\n- Test errors" ;
+			break;
+
+		case "Compliance.Guidelines":
+
+			posh_bool = false;
+			infs_bool = false;
+			req.body.queryResult.outputContexts.forEach(function(oc) {
+				posh_bool = posh_bool|| oc.name.indexOf("posh")!=-1;
+				infs_bool = infs_bool|| oc.name.indexOf("infosec")!=-1;
+				
+				
+			});
+			both = (posh_bool&&infs_bool) || !(posh_bool||infs_bool);
+			speech = infs_bool
+				? "You will find the test link on the Zoho People homepage. Once you login, refer to “Quick Links” section on the bottom left of the homepage. Click on the “More” option on the left panel and select “Organization”.  Select “Infosec Quiz” and click on “Add a new record” to take the test. \n\nFew guidelines to keep in mind:\n- In case you need to take a break in between the module, you can save the progress and come back at it again.\n- You can switch in-between tabs while taking the exam.\n- You will be able to check your score as soon as you finish the test. If you have closed the tab and want to check your scores again, you can do that by clicking the test link again on Zoho."
+				: "You will find the test link on the Zoho People homepage. Once you login, refer to “Quick Links” section on the bottom left of the homepage. Click on “Prevention of Sexual Harassment Online Training” link and sign in using your Quantiphi ID (select module as “EEM”).\n\nFew guidelines to keep in mind:\n- In case you need to take a break in between the module, you can save the progress and come back at it again.\n- You can switch in-between tabs while taking the exam.\n- You will be able to check your score as soon as you finish the test. If you have closed the tab and want to check your scores again, you can do that by clicking the test link again on Zoho." ;
 			break;
 
 		case "Compliance.WhatIs":
