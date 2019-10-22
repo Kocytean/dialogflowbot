@@ -30,7 +30,7 @@ restService.post("/qhrbot", function(req, res) {
 		
 		both = ~(posh_bool^infs_bool);
 	});
-		
+
 	switch (action){
 		case "Compliance.Frequency":
 			
@@ -63,8 +63,8 @@ restService.post("/qhrbot", function(req, res) {
 			posh_bool = req.body.queryResult.parameters.Topic? req.body.queryResult.parameters.Topic ==="PoSH": false;
 			infs_bool = req.body.queryResult.parameters.Topic? req.body.queryResult.parameters.Topic ==="InfoSec": false;
 
-			about_test_bool = req.body.queryResult.parameters.Test? true:false;
-			quant_bool = req.body.queryResult.parameters.Quantiphi? true:false;
+			var about_test_bool = req.body.queryResult.parameters.Test? true:false;
+			var quant_bool = req.body.queryResult.parameters.Quantiphi? true:false;
 
 			if(about_test_bool){
 				speech = posh_bool
