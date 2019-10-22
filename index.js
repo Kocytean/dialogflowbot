@@ -59,6 +59,15 @@ restService.post("/qhrbot", function(req, res) {
 				? "This usually takes 3 hours if you have a stable internet connection as there are videos which are a part of the training."
 				: "This usually takes about 5 minutes if you have a stable internet connection";
 			break;
+		case "Compliance.StudyMaterial":
+			
+			speech = both
+				?"You will find relevant material in the Files section on Zoho. (You can use the filter feature in the top right to search for files by name.)" 
+				:  posh_bool
+				? "New joiners must go through the video tutorial that outlines the basic aspects of the topic, while employees taking the refresher test can directly proceed to the test. Links for both will be available in the “Quick Links” section in Zoho People."
+				: "You will find relevant material in the Files section on Zoho. (You can use the filter feature in the top right to search \"Information Security User Awareness\")";
+			break;
+
 		case "Compliance.WhatIs":
 			posh_bool = req.body.queryResult.parameters.Topic? req.body.queryResult.parameters.Topic ==="PoSH": false;
 			infs_bool = req.body.queryResult.parameters.Topic? req.body.queryResult.parameters.Topic ==="InfoSec": false;
