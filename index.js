@@ -155,7 +155,7 @@ restService.post("/qhrbot", function(req, res) {
 				posh_bool = posh_bool|| oc.name.indexOf("posh")!=-1;
 			});
 			speech = posh_bool
-				? "Did you face an error with the video, or during the test?"
+				? "Did you face an error with the video, or during the test?\n- Video Error\n- Test Error"
 				: "Firstly, make sure you save on all stages. Try refreshing the page and start again.";
 			break;
 
