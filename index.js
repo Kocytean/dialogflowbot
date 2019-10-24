@@ -162,7 +162,7 @@ restService.post("/qhrbot", function(req, res) {
 			});
 			speech = posh_bool
 				? "Did you face an error with the video, or during the test?\n- Video Error\n- Test Error"
-				: "Firstly, make sure you save on all stages. Try refreshing the page and start again.";
+				: "Did you face an error with the test, or during submission?\n- Test Error\n- Submission Error";
 			break;
 
 		case "InvalidRequest":
