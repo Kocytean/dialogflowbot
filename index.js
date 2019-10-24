@@ -81,13 +81,13 @@ restService.post("/qhrbot", function(req, res) {
 			});
 			if(train_bool){ 
 				speech = infs_bool
-					? "Please choose from the following categories that you want to know about InfoSec training:\n- About InfoSec training\n- System errors" 
-					:  "Please choose from the following categories that you want to know about PoSH training:\n- About PoSH training\n- Errors" ;
+					? "You can refer to the “Quantiphi- Information Security User Awareness” in the Files section of Zoho. This is a mandatory training. There will be a strict action taken against the defaulters." 
+					: "Please choose from the following categories that you want to know about PoSH training:\n- About PoSH training\n- Errors" ;
 				break;
 			} else {
 				speech = infs_bool
-					? "Please choose from the following categories that you want to know about InfoSec test:\n- About InfoSec test\n- Preparation\n- Test guidelines\n- Test errors" 
-					:  "Please choose from the following categories that you want to know about PoSH test:\n- About PoSH test\n- Preparation\n- Test guidelines\n- Test errors" ;
+					? "Please choose from the following categories that you want to know about InfoSec test:\n- About InfoSec test\n- Preparation\n- Test guidelines\n- Errors" 
+					:  "Please choose from the following categories that you want to know about PoSH test:\n- About PoSH test\n- Preparation\n- Test guidelines\n- Errors" ;
 				break;
 			}
 
@@ -125,12 +125,6 @@ restService.post("/qhrbot", function(req, res) {
 					: "Context not available";
 				break;
 			} else if (quant_bool){
-				if(!(posh_bool && infs_bool)){
-				req.body.queryResult.outputContexts.forEach(function(oc) {
-					posh_bool = posh_bool|| oc.name.indexOf("posh")!=-1;
-					infs_bool = infs_bool|| oc.name.indexOf("infosec")!=-1;
-
-				});}
 				speech = posh_bool
 					? "Quantiphi Analytics is committed to ensuring that the work environment at all locations of the organisation is fair, safe and harmonious. The company strives to create a safe and welcoming environment even for those who visit our premises, such as customers, vendors and others. Discrimination and harassment of any type is strictly prohibited. Every organization with more than 50 or more employees needs to establish an Internal Complaints Committee (ICC). Even though the act states it is for women, any employee- male or female, should not hesitate to reach out to the respective committee member from the HR Team. For more details about the committee or complaint procedure, please refer to the Prevention of Sexual Harassment Policy available under the “FIles” section on Zoho."
 					: infs_bool
@@ -161,8 +155,8 @@ restService.post("/qhrbot", function(req, res) {
 				posh_bool = posh_bool|| oc.name.indexOf("posh")!=-1;
 			});
 			speech = posh_bool
-				? "Did you face an error with the video, or during the test?\n- Video Error\n- Test Error"
-				: "Did you face an error with the test, or during submission?\n- Test Error\n- Submission Error";
+				? "Please enter the category most relevant to your error:\n- Video Error\n- Test Error\n- Save Error"
+				: "Please enter the category most relevant to your error:\n- Test Error\n- Submission Error\n- Save Error";
 			break;
 
 		case "InvalidRequest":
