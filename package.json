@@ -1,7 +1,7 @@
 {
-  "name": "HRBot",
+  "name": "DialogflowBot",
   "version": "0.1.0",
-  "description": "Quantiphi HRbot",
+  "description": "Basic Dialogflow Bot",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
