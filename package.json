@@ -1,5 +1,5 @@
 {
-  "name": "DialogflowBot",
+  "name": "dialogflowbot",
   "version": "0.1.0",
   "description": "Basic Dialogflow Bot",
   "main": "index.js",
